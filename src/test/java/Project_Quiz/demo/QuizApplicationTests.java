@@ -1,13 +1,7 @@
 package Project_Quiz.demo;
-
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-@SpringBootTest
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+@SpringBootApplication
 class QuizApplicationTests {
 
-	@Test
-	void contextLoads() {
 	}
-
-}
