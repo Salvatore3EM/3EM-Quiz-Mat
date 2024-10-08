@@ -1,6 +1,8 @@
-package model;
+package Project_Quiz.demo.model;
 
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "Score")
@@ -22,9 +24,9 @@ public class Score {
         private String created_at;
 
         @ManyToMany
-        Answer answer_id;
+        List<Answer> answer_id;
 
-        @OneToMany
+        @ManyToOne
         Quiz quiz_id;
 
 

@@ -1,4 +1,4 @@
-package model;
+package Project_Quiz.demo.model;
 
 import jakarta.persistence.*;
 

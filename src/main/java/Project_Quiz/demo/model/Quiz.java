@@ -1,4 +1,4 @@
-package model;
+package Project_Quiz.demo.model;
 
 import jakarta.persistence.*;
 
@@ -25,7 +25,7 @@ public class Quiz {
    @OneToMany
    List<Question> questions;
 
-   @ManyToOne
+   @OneToMany
    List<Score> scores;
 
     public Quiz() {

@@ -1,6 +1,6 @@
-package repository;
+package Project_Quiz.demo.repository;
 
-import model.Question;
+import Project_Quiz.demo.model.Question;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package model;
+package Project_Quiz.demo.model;
 
 import jakarta.persistence.*;
 import org.springframework.stereotype.Service;
@@ -13,8 +13,8 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "surname")
-    private String surname;
+    @Column(name = "lastname")
+    private String lastname;
 
     @Column(name = "email")
     private String email;
@@ -25,10 +25,10 @@ public class User {
     //Constructor
     public User() {
     }
-    public User(Long id, String name, String surname, String email, String password) {
+    public User(Long id, String name, String lastname, String email, String password) {
         this.id = id;
         this.name=name;
-        this.surname=surname;
+        this.lastname=lastname;
         this.email=email;
         this.password=password;
     }
@@ -51,11 +51,11 @@ public class User {
     }
 
     public String getSurname() {
-        return surname;
+        return lastname;
     }
 
     public void setSurname(String surname) {
-        this.surname = surname;
+        this.lastname = surname;
     }
 
     public String getEmail() {
