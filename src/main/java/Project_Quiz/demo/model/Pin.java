@@ -3,6 +3,7 @@ package Project_Quiz.demo.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "Pin")
@@ -17,15 +18,15 @@ public class Pin {
     private String pinText;
 
     @Column(name = "start")
-    private LocalDate start;
+    private LocalDateTime start;
 
     @Column(name = "end")
-    private LocalDate end;
+    private LocalDateTime end;
 
     //Constructor
     public Pin() {
     }
-    public Pin(Long id, String pinText, LocalDate start, LocalDate end) {
+    public Pin(Long id, String pinText, LocalDateTime start, LocalDateTime end) {
         this.id = id;
         this.pinText=pinText;
         this.start=start;
@@ -50,19 +51,19 @@ public class Pin {
         this.pinText = pinText;
     }
 
-    public LocalDate getStart() {
+    public LocalDateTime getStart() {
         return start;
     }
 
-    public void setStart(LocalDate start) {
+    public void setStart(LocalDateTime start) {
         this.start = start;
     }
 
-    public LocalDate getEnd() {
+    public LocalDateTime getEnd() {
         return end;
     }
 
-    public void setEnd(LocalDate end) {
+    public void setEnd(LocalDateTime end) {
         this.end = end;
     }
 }
