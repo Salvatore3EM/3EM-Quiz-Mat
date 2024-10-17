@@ -1,5 +1,6 @@
 package Quiz3em.demo.model;
 
+import Quiz3em.demo.model.DTO.AnswerDto;
 import jakarta.persistence.*;
 @Entity
 @Table(name = "Question")
@@ -72,4 +73,6 @@ public class Question {
     public void setQuiz_id(Quiz quiz_id) {
         this.quiz_id = quiz_id;
     }
+
+
 }

@@ -38,4 +38,8 @@ public class UserController {
         userService.updateUser(id,user);
     }
 
+    @PostMapping("/register")
+    public void register(){
+        userService.register();
+    }
 }

@@ -29,6 +29,19 @@ public class ScoreSpringService {
     }
 
     public void submitScore(){
+        Score score = new Score();
+        score.setQuiz(score.getQuiz());
+        score.setName(score.getName());
+        score.setLastname(score.getLastname());
+        score.setEmail(score.getEmail());
+
+        for (int i = 0 ; i< score.getAnswer_id().size(); i++){
+            score.getAnswer_id();
+            scoreRepository.save(score);
+            if(score.getAnswer_id()==score.getAnswer_id()){
+                System.out.println("error");
+            }
+        }
 
     }
 }

@@ -1,6 +1,7 @@
 package Quiz3em.demo.controller;
 
 import Quiz3em.demo.model.DTO.QuestionDto;
+import Quiz3em.demo.model.DTO.QuizDto;
 import Quiz3em.demo.model.Quiz;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -52,8 +53,8 @@ public class QuizController {
         return ResponseEntity.ok(quiz);
     }
 
-    @PostMapping("/add/{quiz_id}")
-    public Object addQuiz(@PathVariable int quiz_id, @RequestBody List<QuestionDto> questions){
-        return quizService.addQuiz((long) quiz_id,questions);
+    @PostMapping("/add")
+    public Object addQuiz( @RequestBody QuizDto quizDto){
+        return quizService.addQuiz(quizDto);
     }
 }

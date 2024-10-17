@@ -3,6 +3,7 @@ package Quiz3em.demo.service;
 import Quiz3em.demo.model.Answer;
 import Quiz3em.demo.model.DTO.AnswerDto;
 import Quiz3em.demo.model.DTO.QuestionDto;
+import Quiz3em.demo.model.DTO.QuizDto;
 import Quiz3em.demo.model.Question;
 import Quiz3em.demo.model.Quiz;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import Quiz3em.demo.repository.QuestionSpringRepository;
 import Quiz3em.demo.repository.QuizSpringRepository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,25 +57,37 @@ public class QuizSpringService {
         return quizRepository.findAllByVisibilityTrue();
     }
 
-    public Object addQuiz(Long id_quiz, List<QuestionDto> quizList) {
+    public Object addQuiz(QuizDto quiz) {
+
         List<Question> questions = new ArrayList<Question>();
         List<Question> NewQuestion = new ArrayList<>();
         List<Answer> answers = new ArrayList<Answer>();
         List<Object> addQuiz = new ArrayList<Object>();
         QuestionDto questionDTO = null;
+        List<QuestionDto> questionsDTOList;
         AnswerDto answerDTO = null;
         List<AnswerDto> answerDTOList;
-        for (int i = 0; i < quizList.size(); i++) {
-            questionDTO = quizList.get(i);
+        Quiz NewQuiz = new Quiz();
+
+        NewQuiz.setTitle(quiz.getQuizTitle());
+        NewQuiz.setVisibility(quiz.isVisibility());
+        NewQuiz.setCreated_at(LocalDate.now().toString());
+        addQuiz.add(NewQuiz);
+        quizRepository.save(NewQuiz);
+
+        questionsDTOList = quiz.getQuestionDtoList();
+
+        for (int i = 0; i < questionsDTOList.size(); i++) {
+            questionDTO = questionsDTOList.get(i);
 
             Question question = new Question();
             question.setQuestionText(questionDTO.getQuestion_text());
-            question.setVisibility(questionDTO.isVisibility);
+            question.setVisibility(questionDTO.isVisibility());
             question.setCreated_at(LocalDate.now().toString());
 
-            question.setQuiz_id(quizRepository.findById(id_quiz).orElse(null));
+            question.setQuiz_id(quizRepository.findById(NewQuiz.getId()).orElse(null));
 
-            questions.add(question);
+            questionRepository.save(question);
             addQuiz.add(question);
 
             answerDTOList = questionDTO.getAnswers();
@@ -85,14 +99,12 @@ public class QuizSpringService {
                 answer.setAnswerText(answerDTO.getAnswer_text());
                 answer.setCorrect(answerDTO.getIs_correct());
                 answer.setCreated_at(LocalDate.now().toString());
+                answer.setQuestion_id(questionRepository.findById(question.getId()).orElse(null));
 
-                answers.add(answer);
+                answerRepository.save(answer);
                 addQuiz.add(answer);
             }
         }
-
-        questionRepository.saveAll(questions);
-        answerRepository.saveAll(answers);
         return addQuiz;
     }
 }

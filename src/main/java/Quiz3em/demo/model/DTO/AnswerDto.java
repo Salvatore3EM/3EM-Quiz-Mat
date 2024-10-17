@@ -2,13 +2,13 @@ package Quiz3em.demo.model.DTO;
 
 public class AnswerDto {
     public String answer_text;
-    public String is_correct;
+    public boolean is_correct;
     public String created_at;
 
     public AnswerDto() {
     }
 
-    public AnswerDto(String answer_text, String is_correct, String created_at) {
+    public AnswerDto(String answer_text, boolean is_correct, String created_at) {
         this.answer_text = answer_text;
         this.is_correct = is_correct;
         this.created_at = created_at;
@@ -26,7 +26,7 @@ public class AnswerDto {
         return is_correct;
     }
 
-    public void setIs_correct(String is_correct) {
+    public void setIs_correct(boolean is_correct) {
         this.is_correct = is_correct;
     }
 

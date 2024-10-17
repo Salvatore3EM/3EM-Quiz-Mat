@@ -2,6 +2,7 @@ package Quiz3em.demo.service;
 
 import Quiz3em.demo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import Quiz3em.demo.repository.UserSpringRepository;
 
@@ -37,5 +38,21 @@ public class UserSpringService {
             oldUser.setPassword(user.getPassword());
         }
         userRepository.save(oldUser);
+    }
+
+    public void register(){
+
+        User user = new User();
+        user.setName(user.getName());
+        user.setSurname(user.getSurname());
+        user.setEmail(user.getEmail());
+        user.setPassword(user.getPassword());
+        userRepository.save(user);
+
+        if(user == null){
+            ResponseEntity.badRequest();
+        }else {
+            ResponseEntity.ok("admin found");
+        }
     }
 }

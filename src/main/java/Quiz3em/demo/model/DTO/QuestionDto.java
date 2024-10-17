@@ -1,12 +1,13 @@
 package Quiz3em.demo.model.DTO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionDto {
     public String question_text;
     public String created_at;
     public boolean isVisibility;
-    List<AnswerDto> answers;
+    public List<AnswerDto> answers = new ArrayList<>();
 
     public QuestionDto() {
     }
@@ -32,6 +33,14 @@ public class QuestionDto {
 
     public void setCreated_at(String created_at) {
         this.created_at = created_at;
+    }
+
+    public boolean isVisibility() {
+        return isVisibility;
+    }
+
+    public void setVisibility(boolean visibility) {
+        isVisibility = visibility;
     }
 
     public List<AnswerDto> getAnswers() {
